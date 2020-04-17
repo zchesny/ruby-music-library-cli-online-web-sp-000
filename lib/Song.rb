@@ -1,10 +1,9 @@
 class Song
   extend Concerns::Findable
+  extend Concerns::Persistable::ClassMethods
+  include Concerns::Persistable::InstanceMethods
 
-  attr_accessor :name
   attr_reader :artist, :genre
-
-  @@all = []
 
   def initialize(name, artist=nil, genre=nil)
     @name = name
@@ -21,14 +20,6 @@ class Song
 
   def self.create_from_filename(file)
     self.new_from_filename(file).save
-  end
-
-  def save
-    self.tap{self.class.all << self}
-  end
-
-  def self.destroy_all
-    @@all = []
   end
 
   def self.all

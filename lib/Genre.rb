@@ -1,26 +1,15 @@
 class Genre
   extend Concerns::Findable
-
-  attr_accessor :name
-
-  @@all = []
+  extend Concerns::Persistable::ClassMethods
+  include Concerns::Persistable::InstanceMethods
 
   def initialize(name)
     @name = name
     @songs = []
   end
 
-  def save
-    self.tap{self.class.all << self}
-  end
-
-
   def self.all
     @@all
-  end
-
-  def self.destroy_all
-    @@all = []
   end
 
   def songs
