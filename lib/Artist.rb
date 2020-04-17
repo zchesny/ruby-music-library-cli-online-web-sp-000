@@ -4,6 +4,8 @@ class Artist
   extend Concerns::Persistable::ClassMethods
   include Concerns::Persistable::InstanceMethods
 
+  attr_reader :songs
+
   def initialize(name)
     @name = name
     @songs = []
