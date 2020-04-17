@@ -3,6 +3,8 @@ class Genre
   extend Concerns::Persistable::ClassMethods
   include Concerns::Persistable::InstanceMethods
 
+  attr_reader :songs
+
   def initialize(name)
     @name = name
     @songs = []
@@ -10,10 +12,6 @@ class Genre
 
   def self.all
     @@all
-  end
-
-  def songs
-    @songs
   end
 
   def artists

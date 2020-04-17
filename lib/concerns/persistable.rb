@@ -4,6 +4,7 @@ module Concerns::Persistable
 
     def save # Instance method
       self.tap{self.class.all << self}
+      # whenever you create a variable, keep the smallest scope possible (that's why using tap is good)
     end
   end
 
